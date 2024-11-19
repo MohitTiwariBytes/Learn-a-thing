@@ -2,16 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Satoshi";
+  src: url("./assets/Satoshi-Variable.ttf");
+}
+
+* {
+  font-family: "Satoshi";
+}
+
 .main-login-card {
   overflow: hidden;
   display: flex;
 }
 
-.login-options, .email-login {
+.login-options,
+.email-login {
   transition: transform 0.2s ease-in-out;
 }
 
-.email-login{
+.email-login {
   margin-top: -40px;
 }
 
@@ -21,12 +31,11 @@
   z-index: 1;
 }
 
-
 .email-login.active {
   transform: translateX(100%);
 }
 
-.email-login.notActive{
+.email-login.notActive {
   transform: translateX(400%);
 }
 
@@ -47,19 +56,20 @@
     align-items: center;
   }
 
-  .login-options, .email-login {
+  .login-options,
+  .email-login {
     transform: translateX(0);
   }
 
-  .login-options{
+  .login-options {
     margin-top: -504px;
   }
 
-  .email-login{
+  .email-login {
     margin-top: 0px;
   }
 
-  .login-options.slide-right{
+  .login-options.slide-right {
     transform: translate(-300%);
   }
 
@@ -67,7 +77,7 @@
     transform: translateX(0);
   }
 
-  .email-login.notActive{
+  .email-login.notActive {
     transform: translateX(400%);
   }
 }
