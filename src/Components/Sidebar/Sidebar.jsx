@@ -1,68 +1,107 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="h-auto w-64 bg-white shadow-md border-2 overflow-auto">
+    <div className="asd h-4/5 w-64 bg-white shadow-md border-2 rounded-r-lg overflow-auto relative top-32 sticky">
       <ul className="flex flex-col space-y-3.5 p-4 text-purple-500">
         <li>
-          <Link to="/messages" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/messages"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-comments"></i>
             <span>Messages</span>
           </Link>
         </li>
         <li>
-          <Link to="/books" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/books"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-book"></i>
             <span>Books</span>
           </Link>
         </li>
         <li>
-          <Link to="/community" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/community"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-users"></i>
             <span>Community</span>
           </Link>
         </li>
         <li>
-          <Link to="/courses" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/ai"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
+            <i className="fas fa-robot"></i>
+            <span>Get AI Help</span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/courses"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-video"></i>
             <span>Courses</span>
           </Link>
         </li>
         <li className="h-px bg-gray-300"></li>
         <li>
-          <Link to="/todo" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/todo"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-list"></i>
             <span>To do list</span>
           </Link>
         </li>
         <li>
-          <Link to="/quizzes" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/quizzes"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-question-circle"></i>
             <span>Quizzes</span>
           </Link>
         </li>
         <li>
-          <Link to="/pomodoro" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/pomodoro"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-clock"></i>
             <span>Pomodoro</span>
           </Link>
         </li>
         <li>
-          <Link to="/tips" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/tips"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-lightbulb"></i>
             <span>Tips and Tricks</span>
           </Link>
         </li>
         <li className="h-px bg-gray-300"></li>
         <li>
-          <Link to="/profile" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/profile"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-user"></i>
             <span>Profile</span>
           </Link>
         </li>
         <li>
-          <Link to="/settings" className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded">
+          <Link
+            to="/settings"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
             <i className="fas fa-cog"></i>
             <span>Setting</span>
           </Link>
