@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="h-4/5 w-64 bg-white shadow-md border-2 rounded-r-lg overflow-auto relative top-16">
+    <div className="asd h-4/5 w-64 bg-white shadow-md border-2 rounded-r-lg overflow-auto relative top-32 sticky">
       <ul className="flex flex-col space-y-3.5 p-4 text-purple-500">
         <li>
           <Link
@@ -30,6 +30,15 @@ const Sidebar = () => {
           >
             <i className="fas fa-users"></i>
             <span>Community</span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/ai"
+            className="flex items-center space-x-2 p-2 hover:bg-purple-100 rounded"
+          >
+            <i className="fas fa-robot"></i>
+            <span>Get AI Help</span>
           </Link>
         </li>
         <li>
