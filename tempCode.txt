@@ -1,6 +1,6 @@
 <div className="sd flex w-full justify-end">
           <span className="inline-block max-w-[320px] break-words bg-purple-500 py-2 px-5 text-white rounded-xl my-5">
             Hello my name is Mohit Tiwari and I am going to be ashdauois huad
-            adsasd asd my name is mohit
+            adsasd asd my name is mohit  sssd
           </span>
         </div>
