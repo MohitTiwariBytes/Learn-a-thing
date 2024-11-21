@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { getChatGPTResponse } from "../Backend/Bot";  // Import the function
 
 export default function ChatBot() {
   const [message, setMessage] = useState("");
@@ -10,23 +11,50 @@ export default function ChatBot() {
     setMessage(e.target.value);
   };
 
-  const handleClick = () => {
+  // Function to handle sending a message
+  const handleClick = async () => {
     if (message.trim()) {
+      // Add the user's message to the chat
       setMessages((prevMessages) => [
         ...prevMessages,
-        { id: prevMessages.length, text: message },
+        { id: prevMessages.length, text: message, sender: 'user' },
       ]);
-      setMessage(""); // Clear the input after sending the message
+
+      // Clear the input field
+      setMessage(""); 
+
+      try {
+        // Get the response from ChatGPT
+        const aiResponse = await getChatGPTResponse(message);
+        
+        // Add the AI's response to the chat
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { id: prevMessages.length + 1, text: aiResponse, sender: 'ai' },
+        ]);
+      } catch (error) {
+        console.error("Error getting response from ChatGPT:", error);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { id: prevMessages.length + 1, text: "Sorry, I couldn't process your request.", sender: 'ai' },
+        ]);
+      }
     }
   };
 
-  // Event listener for the Enter key press
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Prevent the default action (like a form submission)
-      handleClick(); // Call handleClick when Enter is pressed
+      e.preventDefault();
+      handleClick(); 
     }
   };
+
+  // Scroll to the bottom whenever the messages change
+  useEffect(() => {
+    if (chatBoxRef.current) {
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+    }
+  }, [messages]); // Trigger on message change
 
   return (
     <div className="main h-screen w-full relative flex justify-center">
@@ -47,7 +75,7 @@ export default function ChatBot() {
             id="search"
             value={message}
             onChange={handleChange}
-            onKeyDown={handleKeyDown} // Attach the keydown listener here
+            onKeyDown={handleKeyDown} 
             className="block w-full p-4 ps-10 text-sm text-gray-900 border border-purple-300 rounded-lg bg-white-50 focus:ring-purple-500 focus:border-purple-500"
             placeholder="Enter your questions!"
             required
@@ -65,9 +93,10 @@ export default function ChatBot() {
         ref={chatBoxRef}
         className="chat w-full h-screen overflow-scroll flex flex-col items-start p-5"
       >
+        
         {messages.map((msg) => (
-          <div key={msg.id} className="flex w-full justify-end">
-            <span className="inline-block max-w-[320px] break-words bg-purple-500 py-2 px-5 text-white rounded-xl my-5">
+          <div key={msg.id} className={`flex w-full ${msg.sender === 'ai' ? 'justify-start' : 'justify-end'}`}>
+            <span className={`inline-block max-w-[320px] break-words ${msg.sender === 'ai' ? 'bg-purple-700' : 'bg-purple-500'} py-2 px-5 text-white rounded-xl my-5`}>
               {msg.text}
             </span>
           </div>
