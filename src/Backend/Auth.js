@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWith
 import { getDatabase, ref, set } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "synapse-13596.firebaseapp.com",
   databaseURL: "https://synapse-13596-default-rtdb.firebaseio.com",
   projectId: "synapse-13596",
